@@ -16,10 +16,16 @@ function opNumbers(num) {
       num = Math.floor(num / 10);
   }
   result = result ** 3;
-  result = String(result);
-  console.log(result[0] + ' ' + result[1]);
+  console.log(result);
+  let arr = [];
+  while (result) {
+    arr.unshift(result % 10);
+    result = Math.floor(result / 10);
+  }
+  console.log(arr[0] , arr[1]);
   return result; 
 }
+
 opNumbers(num);
 
 lang = prompt('введите значение "ru" или "en"');
@@ -57,3 +63,17 @@ namePerson.toLowerCase();
 (namePerson === 'артем') ? console.log('директор') :
 (namePerson === 'максим') ? console.log('преподаватель') :
 console.log('студент');
+
+const getString = function (data) {
+  if (typeof data ===  'string') {
+    data = data.trim();
+    if ( data.length > 30) {
+      console.log(data.slice(0, 31) + '...');
+    }
+  } else {
+    console.log('Введена не строка');
+  }
+}
+
+getString(10);
+getString('                       привет мир ksdjvkjsv        dvhksajv kjavklj nvhkjpasv npkvakjspvkjpa  ');
