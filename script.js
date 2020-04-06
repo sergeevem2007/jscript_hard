@@ -32,3 +32,9 @@ function langArray(lang) {
   lang_array['en'] = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
   console.log(lang_array[lang]);
 }
+
+namePerson = prompt('введите значение namePerson');
+namePerson.toLowerCase();
+(namePerson === 'артем') ? console.log('директор') :
+(namePerson === 'максим') ? console.log('преподаватель') :
+console.log('студент');
