@@ -1,19 +1,27 @@
 'use strict';
 
+let date = new Date();
+console.log(date);
+let week = ['Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота', 'Воскресенье'];
+let ArrayMonth = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
+let letterDate = document.querySelector('.letter-date'),
+    numberDate = document.querySelector('.number-date');
+    dayWeek = date.getDay()-1,
+    day = date.getDate(),
+    month = date.getMonth(),
+    year = date.getFullYear(),
+    hour = date.getHours();
 
-let arr = ['543', '2999', '7998', '456', '6481', '200', '1900'];
-for (let i = 0; i < arr.length; i++) {
-  if (arr[i].charAt(0) === '2' || arr[i].charAt(0) === '4') {
-    console.log(arr[i]);
-  }
-}
+let nameHour = function() {
+  let nameHour = 'часов';
+  if (hour === 0) {
+    nameHour = 'часа';
+  } else if ()
+};
+let parseDate = function() {
+  
+  
+  letterDate = document.write('Сегодня ' + week[dayWeek] + ', ' + day + ' ' + ArrayMonth[month] + ' ' + year + ' года, ' + hour + ' ' + nameHour());
+};
 
-function showPrimes(n) {
-  nextPrime: for (let i = 1; i < n; i++) {
-    for (let j = 2; j < i; j++) {
-      if (i % j == 0) continue nextPrime;
-    }
-    console.log( i + ' Делители этого числа: 1 и ' + i); 
-  }
-}
-showPrimes(100);
+console.log(parseDate());
