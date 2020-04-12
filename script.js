@@ -190,21 +190,18 @@ salaryAmount.addEventListener('input', function () {
   }
 });
 
-
+let allInput = document.querySelectorAll('input');
+for (let i = 0; i < allInput.length; i++) {
+  if (allInput[i].placeholder === 'Наименование') {
+    allInput[i].addEventListener('keyup', isLetter);
+  } else if (allInput[i].placeholder === 'Сумма') {
+    allInput[i].addEventListener('keyup', isNumber);
+  }
+}
 
 expensesAdd.addEventListener('click', appData.addExpensesBlock);
 incomeAdd.addEventListener('click', appData.addIncomeBlock);
 periodSelect.addEventListener('input', eventFunc);
-
-salaryAmount.addEventListener('keyup', isNumber);
-expensesAmount.addEventListener('keyup', isNumber);
-incomeAmount.addEventListener('keyup', isNumber);
-targetAmount.addEventListener('keyup', isNumber);
-additionalIncomeItem[0].addEventListener('keyup', isLetter);
-additionalIncomeItem[1].addEventListener('keyup', isLetter);
-expensesTitle.addEventListener('keyup', isLetter);
-incomeTitle.addEventListener('keyup', isLetter);
-additionalExpensesItem.addEventListener('keyup', isLetter);
 
 console.log('Наша программа включает в себя данные:');
 for (let key in appData) {
