@@ -1,47 +1,57 @@
 'use strict';
 
-function DomElement(selector, height, width, bg, fontSize){
-  this.selector = selector;
-  this.height = height;
-  this.width = width;
-  this.bg = bg;
-  this.fontSize = fontSize;
-}
-
-DomElement.prototype.createElem = function(){
-  let body = document.querySelector('body');
-  console.log(this);
-  if (this.selector.charAt(0) === '.') {
-    let div = document.createElement('div');
-    div.classList.add(this.selector.slice(1));
-    div.style.cssText=
-    `
-    height: ${this.height}px;
-    width: ${this.width}px;
-    background:${this.bg};
-    font-size:${this.fontSize}px;
-    `;
-    div.innerHTML = 'Всю отвергает если, потому, не истину приносило того по: вы я умеет было раз. Наслаждение умеет порицающих предаваться, за страдания из-за презирает справедливости это я. Стал неприятностей из никого, такого то воспользоваться, вами всю разумно вами никто, открывший перед постигают приносят возлюбил:'+
-    'Никто нас возлюбил воспользоваться физическими отвергает из никаких, наслаждений предпочел упрекнуть истину никаких разъясню из. Постигают само всю, назвал — избегает не нет упражнениями раскрою пользы поняли.';
-    body.append(div);
-  } else if (this.selector.charAt(0) === '#') {
-    let p = document.createElement('p');
-    p.id = this.selector.slice(1);
-    p.style.cssText=
-    `
-    height: ${this.height}px;
-    width: ${this.width}px;
-    background:${this.bg};
-    font-size:${this.fontSize}px;
-    `;
-    p.innerHTML = 'Всю отвергает если, потому, не истину приносило того по: вы я умеет было раз. Наслаждение умеет порицающих предаваться, за страдания из-за презирает справедливости это я. Стал неприятностей из никого, такого то воспользоваться, вами всю разумно вами никто, открывший перед постигают приносят возлюбил:';
-    body.append(p);
+document.addEventListener("DOMContentLoaded", function() {
+  function DomElement(selector, height, width, bg, fontSize){
+    this.selector = selector;
+    this.height = height;
+    this.width = width;
+    this.bg = bg;
+    this.fontSize = fontSize;
   }
-};
+  
+  DomElement.prototype.createElem = function(){
+    let body = document.querySelector('body');
+      let div = document.createElement('div');
+      div.classList.add(this.selector.slice(1));
+      div.style.cssText=
+      `
+      height: ${this.height}px;
+      width: ${this.width}px;
+      background:${this.bg};
+      position: absolute;
+      `;
+      body.append(div);
+  };
+  
+  let elem = new DomElement ('.block','100','100','red');
+  elem.createElem();
+  let bottom = 0,
+      left = 0,
+      right = 0,
+      block = document.querySelector('.block');
 
-let elem1 = new DomElement ('.block','400','500','red','20');
-let elem2 = new DomElement ('#best','500','900','green','30');
+  document.addEventListener('keydown', function (event) {
+    if ( event.key == "ArrowDown") {
+      bottom += 10;
+      block.style.marginTop = bottom + 'px';
+    }
+    if ( event.key == "ArrowUp") {
+      bottom -= 10;
+      block.style.marginTop = bottom + 'px';
+    }
+    if ( event.key == "ArrowLeft") {
+      right -= 10;
+      left += 10;
+      block.style.marginRight = left + 'px';
+      block.style.marginLeft = right + 'px';
+    }
+    if ( event.key == "ArrowRight") {
+      right += 10;
+      left -= 10;
+      block.style.marginRight = left + 'px';
+      block.style.marginLeft = right + 'px';
+    }
+  });
 
-elem1.createElem();
-elem2.createElem();
+});
 
