@@ -77,21 +77,23 @@ let appData = {
     let cloneExpensesItem = expensesItems[0].cloneNode(true);
     expensesTitle.value = '';
     expensesAmount.value = '';
-    expensesItems[0].parentNode.insertBefore(cloneExpensesItem , expensesAdd);
+    expensesItems[0].parentNode.append(cloneExpensesItem , expensesAdd);
     expensesItems = document.querySelectorAll('.expenses-items');
     if (expensesItems.length === 3) {
       expensesAdd.style.display = 'none';
     }
+    appData.check();
   },
   addIncomeBlock: function() {
     let cloneIncomeItem = incomeItems[0].cloneNode(true);
     incomeTitle.value = '';
     incomeAmount.value = '';
-    incomeItems[0].parentNode.insertBefore(cloneIncomeItem , incomeAdd);
+    incomeItems[0].parentNode.append(cloneIncomeItem , incomeAdd);
     incomeItems = document.querySelectorAll('.income-items');
     if (incomeItems.length === 3) {
       incomeAdd.style.display = 'none';
     }
+    appData.check();
   },
   getExpenses: function() {
     expensesItems.forEach(function(item){
@@ -177,8 +179,21 @@ let appData = {
   },
   calcSaveMoney: function() {
     return appData.budgetMonth * periodSelect.value;
-  }  
+  },
+  check: function() {
+    let allInput = document.querySelectorAll('input');
+    for (let i = 0; i < allInput.length; i++) {
+      if (allInput[i].placeholder === 'Наименование') {
+        allInput[i].addEventListener('keyup', isLetter);
+      } else if (allInput[i].placeholder === 'Сумма') {
+        allInput[i].addEventListener('keyup', isNumber);
+      }
+    }
+  },  
 };
+
+appData.check();
+
 let eventFunc = function (event) { 
   periodAmount.innerHTML = periodSelect.value;
 }
@@ -190,14 +205,8 @@ salaryAmount.addEventListener('input', function () {
   }
 });
 
-let allInput = document.querySelectorAll('input');
-for (let i = 0; i < allInput.length; i++) {
-  if (allInput[i].placeholder === 'Наименование') {
-    allInput[i].addEventListener('keyup', isLetter);
-  } else if (allInput[i].placeholder === 'Сумма') {
-    allInput[i].addEventListener('keyup', isNumber);
-  }
-}
+
+
 
 expensesAdd.addEventListener('click', appData.addExpensesBlock);
 incomeAdd.addEventListener('click', appData.addIncomeBlock);
