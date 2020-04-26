@@ -1,38 +1,27 @@
-window.addEventListener('DOMContentLoaded', () =>{
-  'use strict';
+'use strict';
 
-  // Timer
-  const countTimer = (deadline) =>{
-    let timerHours = document.querySelector('#timer-hours'),
-        timerMinutes = document.querySelector('#timer-minutes'),
-        timerSeconds = document.querySelector('#timer-seconds'),
-        dateStop = new Date(deadline).getTime();
+const task1 = document.querySelector('#task1');
+const regEx1 = /функци./g;
+const funcRepl = task1.textContent.replace(regEx1, '<strong>$&</strong>');
+task1.innerHTML = funcRepl;
 
-    const getTimeRemaining = () =>{
-      
-      let dateNow = new Date().getTime(),
-          timeRemaining = (dateStop - dateNow) / 1000;
-          while (timeRemaining <= 0) {
-            dateStop += 86400000;
-            timeRemaining = (dateStop - dateNow) / 1000;
-          }
-      let seconds = Math.floor(timeRemaining % 60),
-          minutes = Math.floor((timeRemaining / 60) % 60),
-          hours = Math.floor(timeRemaining / 60 / 60);
-          return {timeRemaining, hours, minutes, seconds};
-    }
-    const updateClock = () =>{
-      let timer = getTimeRemaining();
-      timer.hours < 10 ? timerHours.textContent = '0' + timer.hours : timerHours.textContent = timer.hours;
-      timer.minutes < 10 ? timerMinutes.textContent = '0' + timer.minutes : timerMinutes.textContent = timer.minutes;
-      timer.seconds < 10 ? timerSeconds.textContent = '0' + timer.seconds : timerSeconds.textContent = timer.seconds;
-      
-      if (timer.timeRemaining > 0) {
-        setInterval(updateClock, 1000);
-      }
-    }
-    
-    updateClock();
-  }
-  countTimer('27 april 2020 19:45:00');
-});
+const task2 = document.querySelectorAll('p');
+for (let i = 0; i < task2.length; i++) {
+  const regEx2 = /([0,1][0-9]|[2][0-3]):[0-5][0-9]/g;
+  let funcRep2 = task2[i].textContent.replace(regEx2, '<b>$&</b>');
+  task2[i].innerHTML = funcRep2;
+}
+  
+const allDocument = document.querySelector('body');
+const regEx3 = /«.*?»|("[^a-z]*?")/gi;
+const funcRep3 = allDocument.innerHTML.replace(regEx3, '<mark>$&</mark>');
+allDocument.innerHTML = funcRep3;
+
+const regEx4 = /http:\/\/.*[^\s]/gi;
+const funcRep4 = allDocument.innerHTML.replace(regEx4, '<a href="$&">$&</a>');
+allDocument.innerHTML = funcRep4;
+
+const funcRep5 = allDocument.innerHTML.match(/#[a-f0-9]{6}/gi);
+console.log(funcRep5);
+
+console.dir(allDocument.innerHTML);
