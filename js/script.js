@@ -268,7 +268,7 @@ window.addEventListener('DOMContentLoaded', function(){
     
       let timerId = setInterval(() => {
         totalValue.textContent = current;
-        if (to != 0 && to >= 8000 && (current+1000) <= to) {
+        if (to != 0 && to >= 6000 && (current+1000) <= to) {
           current += 1000;
         } else if ((current+100) <= to) {
           current += 100;
@@ -279,7 +279,7 @@ window.addEventListener('DOMContentLoaded', function(){
         } else if (current == to) {
           clearInterval(timerId);
         }
-      }, 100);
+      }, 20);
     }
     
     
