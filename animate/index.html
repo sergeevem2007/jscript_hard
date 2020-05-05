@@ -6,13 +6,16 @@
   <title>Animate</title>
 </head>
 <body>
-  <div id="my-element">
+  <div id="wrapper">
     <div id="start">start</div>
+    <div id="pause" class="d-none">pause</div>
+    <div id="reset">reset</div>
   </div>
+  <div id="element"></div>
 <style>
-#my-element {
+#wrapper {
   position: absolute;
-  margin: 150px;
+  margin: 15px;
   width: 200px;
   height: 200px;
   padding: 1em;
@@ -21,11 +24,23 @@
   font-size: 2em;
   text-align: center;
 }
-#start {
-  display: block;
+#start,#pause,#reset {
   padding: 10px;
-  margin: auto;
+  margin: 10px auto;
   background: black;
+}
+#element {
+  display: block;
+  position: absolute;
+  transform: rotate(0deg);
+  margin: 15px 350px;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  background: url('prop.png') no-repeat center/ 100px 100px;
+}
+.d-none {
+  display: none;
 }
 </style>
   <script src="script.js"></script>
