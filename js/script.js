@@ -17,11 +17,15 @@ const regEx3 = /«.*?»|("[^a-z]*?")/gi;
 const funcRep3 = allDocument.innerHTML.replace(regEx3, '<mark>$&</mark>');
 allDocument.innerHTML = funcRep3;
 
-const regEx4 = /http:\/\/.*[^\s]/gi;
+const regEx4 = /^(http:)\/\/.*(.ru)$/gi;
+const ex4value = allDocument.innerHTML.match(regEx4);
+console.log(ex4value);
 const funcRep4 = allDocument.innerHTML.replace(regEx4, '<a href="$&">$&</a>');
 allDocument.innerHTML = funcRep4;
 
 const funcRep5 = allDocument.innerHTML.match(/#[a-f0-9]{6}/gi);
 console.log(funcRep5);
 
-console.dir(allDocument.innerHTML);
+
+
+// console.dir(allDocument.innerHTML);
