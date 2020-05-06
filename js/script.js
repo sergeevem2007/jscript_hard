@@ -93,11 +93,20 @@ window.addEventListener('DOMContentLoaded', () =>{
     });
   };
   const getScrollElem = () => {
-    const a = document.querySelector('main>a');
-    a.addEventListener('click', (event)=>{
+    const mainA = document.querySelector('main>a'),
+          menuA = document.querySelectorAll('menu>ul>li>a'),
+    serviceBlock = document.querySelector('#service-block');
+    mainA.addEventListener('click', ()=>{
       event.preventDefault();
-      console.log(event.target);
+      scrollTo(serviceBlock);
     });
+    for (let i = 0; i < menuA.length; i++) {
+      menuA[i].addEventListener('click', ()=>{
+        event.preventDefault();
+        let section = document.querySelector(`${menuA[i].hash}`);
+        scrollTo(section);
+      });
+    }
   }
   getScrollElem();
 });
