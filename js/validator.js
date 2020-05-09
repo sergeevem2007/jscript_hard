@@ -1,8 +1,8 @@
 'use strict';
 
 class Validator {
-  constructor({selector, pattern = {}, method}){
-    this.form = document.querySelector(selector);
+  constructor({element, pattern = {}, method}){
+    this.form = element;
     this.pattern = pattern;
     this.method = method;
     this.elementsForm = [...this.form.elements].filter(item => {
@@ -76,10 +76,10 @@ class Validator {
     const style = document.createElement('style');
     style.textContent = `
       input.succsess {
-        border: 2px solid green;
+        border: 2px solid green !important;
       }
       input.error {
-        border: 2px solid red;
+        border: 2px solid red !important;
       }
       .validator-error {
         font-size: 12px;
