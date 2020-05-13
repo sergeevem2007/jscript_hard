@@ -34,10 +34,12 @@ class Validator {
         return pattern.test(elem.value);
       }
     };
+    
     if (this.method){
-      const method = this.method[elem.id];
+      const method = this.method[elem.name];
       if (method) {
-        return method.every(item => validatorMethod[item[0]](elem, this.pattern[item[1]]))
+        console.log(2)
+        return method.every( item => validatorMethod[item[0]](elem, this.pattern[item[1]]))
       }
     } else {
       console.warn('Необходимо передать id полей ввода и методы проверки этих полей');

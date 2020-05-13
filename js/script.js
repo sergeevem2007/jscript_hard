@@ -32,7 +32,7 @@ window.addEventListener('DOMContentLoaded', function(){
       setInterval(updateClock, 1000);
     }
   }
-  countTimer('27 april 2020 19:45:00');
+  // countTimer('27 april 2020 19:45:00');
 
   // Menu
   const toggleMenu = () =>{
@@ -200,7 +200,7 @@ window.addEventListener('DOMContentLoaded', function(){
     });
     startSlide(1500);
   };
-  slider();
+  // slider();  
 
   // validate form
   const validateForm = () => {
